@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Форма маршруту</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    button {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media only screen and (max-width: 480px) {
+      form {
+        max-width: 100%;
+      }
+    }
+  </style>
+  <script>
+      function saveData() {
+      // Отримайте значення полів форми
+      var start = document.getElementById('start').value;
+      var end = document.getElementById('end').value;
+      var distance = document.getElementById('distance').value;
+      var deviation = document.getElementById('deviation').checked;
+      var deviationDistance = document.getElementById('deviationDistance').value;
+      var passenger = document.getElementById('passenger').checked;
+      var carInspection = document.getElementById('carInspection').checked;
+
+      // Створіть об'єкт зі зібраними даними
+      var formData = {
+        start: start,
+        end: end,
+        distance: distance,
+        deviation: deviation,
+        deviationDistance: deviationDistance,
+        passenger: passenger,
+        carInspection: carInspection
+      };
+
+      // Відправте дані у Telegram або зробіть іншу обробку даних за необхідністю
+      console.log(formData);
+    }
+  </script>
+</head>
+<body>
+  <h1>Форма маршруту</h1>
+  <form>
+    <label for="start">Початок маршруту:</label>
+    <input type="text" id="start" name="start" required>
+
+    <label for="end">Кінець маршруту:</label>
+    <input type="text" id="end" name="end" required>
+
+    <button type="button" onclick="addAddressInput()">Додати адресу</button>
+    <div id="addressContainer"></div>
+
+    <label for="distance">Їду через:</label>
+    <input type="text" id="distance" name="distance" required>
+
+    <input type="checkbox" id="deviation" name="deviation" onchange="toggleDeviationInput()">
+    <label for="deviation">Можливе відхилення від маршруту</label>
+    <div id="deviationInput" class="hidden">
+      <label for="deviationDistance">Кілометрів:</label>
+      <input type="number" id="deviationDistance" name="deviationDistance" min="0" max="200">
+    </div>
+
+    <input type="checkbox" id="passenger" name="passenger">
+    <label for="passenger">Можу взяти пасажира</label>
+
+    <input type="checkbox" id="carInspection" name="carInspection">
+    <label for="carInspection">Можу оглянути авто</label>
+
+    <button type="button" onclick="saveData()">Зберегти</button>
+  </form>
+
+  <script>
+      function saveData() {
+      // Отримайте значення полів форми
+      var start = document.getElementById('start').value;
+      var end = document.getElementById('end').value;
+      var distance = document.getElementById('distance').value;
+      var deviation = document.getElementById('deviation').checked;
+      var deviationDistance = document.getElementById('deviationDistance').value;
+      var passenger = document.getElementById('passenger').checked;
+      var carInspection = document.getElementById('carInspection').checked;
+
+      // Створіть об'єкт зі зібраними даними
+      var formData = {
+        start: start,
+        end: end,
+        distance: distance,
+        deviation: deviation,
+        deviationDistance: deviationDistance,
+        passenger: passenger,
+        carInspection: carInspection
+      };
+
+      // Відправте дані у Telegram або зробіть іншу обробку даних за необхідністю
+      console.log(formData);
+    }
+  </script>
+</body>
+</html>
