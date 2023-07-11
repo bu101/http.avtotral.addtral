@@ -519,7 +519,7 @@
         },
         sendText(spam) {
             const textField = document.querySelector('#text_field');
-            const text = textField.value;
+            const text = textField.textContent;
             if (!text.length) {
                 return textField.focus();
             }
