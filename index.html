@@ -53,32 +53,6 @@
       }
     }
   </style>
-  <script>
-      function saveData() {
-      // Отримайте значення полів форми
-      var start = document.getElementById('start').value;
-      var end = document.getElementById('end').value;
-      var distance = document.getElementById('distance').value;
-      var deviation = document.getElementById('deviation').checked;
-      var deviationDistance = document.getElementById('deviationDistance').value;
-      var passenger = document.getElementById('passenger').checked;
-      var carInspection = document.getElementById('carInspection').checked;
-
-      // Створіть об'єкт зі зібраними даними
-      var formData = {
-        start: start,
-        end: end,
-        distance: distance,
-        deviation: deviation,
-        deviationDistance: deviationDistance,
-        passenger: passenger,
-        carInspection: carInspection
-      };
-
-      // Відправте дані у Telegram або зробіть іншу обробку даних за необхідністю
-      console.log(formData);
-    }
-  </script>
 </head>
 <body>
   <h1>Форма маршруту</h1>
@@ -111,6 +85,20 @@
     <button type="button" onclick="saveData()">Зберегти</button>
   </form>
 
+  <script>
+    function toggleDeviationInput() {
+      var deviationInput = document.getElementById('deviationInput');
+      deviationInput.classList.toggle('hidden');
+    }
+
+    function addAddressInput() {
+      var addressInput = document.createElement('input');
+      addressInput.type = 'text';
+      addressInput.name = 'address';
+      addressInput.placeholder = 'Адреса';
+      document.getElementById('addressContainer').appendChild(addressInput);
+    }
+  </script>
   <script>
       function saveData() {
       // Отримайте значення полів форми
